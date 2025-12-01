@@ -1,0 +1,113 @@
+/* ------------------------------------
+   MOBILE-FIRST STYLES (default)
+------------------------------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.95em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr; /* one column */
+    gap: 10px; /* 10px between rows & columns */
+}
+
+/* Figures & Images */
+figure {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+    border: 5px solid blue;
+    border-radius: 35px; /* normal, not circular */
+}
+
+
+/* ------------------------------------
+   TABLET VIEW — min-width: 772px
+------------------------------------- */
+
+@media (min-width: 772px) {
+    .grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns */
+    }
+
+    img {
+        border-radius: 50%; /* circular */
+    }
+
+    /* Last figure spans both columns */
+    .grid figure:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* ------------------------------------
+   LARGE SCREEN — min-width: 992px
+------------------------------------- */
+
+@media (min-width: 992px) {
+
+    /* Every 3rd figure spans both columns */
+    .grid figure:nth-child(3n) {
+        grid-column: 1 / -1;
+    }
+
+    /* Remove border radius everywhere */
+    img {
+        border-radius: 0;
+    }
+}
+
+
+/* ------------------------------------
+   REDUCED MOTION USERS
+------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+
+/* ------------------------------------
+   DARK MODE (prefers-color-scheme: dark)
+------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #1a1a1a;
+        color: #f5e99c; /* light yellowish text */
+    }
+
+    figure {
+        background-color: #2b2b2b; /* dark but not pitch black */
+        padding: 10px;
+        border: 2px solid black;
+    }
+
+    img {
+        border-color: black; /* required */
+    }
+
+    figcaption {
+        color: #f5e99c; /* accessible bright text */
+    }
+}
